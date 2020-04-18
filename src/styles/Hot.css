@@ -1,0 +1,130 @@
+.hot-container{
+  display: flex;
+  flex: auto;
+  min-height: 0;
+  box-sizing: border-box;
+  flex-direction: row;
+  background:  none;
+}
+
+.hot-sider{
+  position: relative;
+  background: white;
+  transition: all 0.2s;
+  background: none;
+  margin-right: 20px;
+  flex: 0 0 200px;
+  max-width: 200px;
+  min-width: 200px;
+  width: 200px;
+}
+
+.hot-content{
+  flex: auto;
+  min-height: 0;
+  background: none;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.ant-menu {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  -webkit-font-feature-settings: 'tnum', "tnum";
+  font-feature-settings: 'tnum', "tnum";
+  margin-bottom: 0;
+  padding-left: 0;
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 0;
+  list-style: none;
+  background: #fff;
+  outline: none;
+  -webkit-box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  -webkit-transition: background 0.3s, width 0.2s;
+  transition: background 0.3s, width 0.2s;
+}
+.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+  border-right: 1px solid #f0f0f0;
+}
+.ant-menu-inline {
+  width: 100%;
+}
+.ant-menu-root.ant-menu-vertical, .ant-menu-root.ant-menu-vertical-left, .ant-menu-root.ant-menu-vertical-right, .ant-menu-root.ant-menu-inline {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ant-menu::before {
+  display: table;
+  content: '';
+}
+.ant-menu-item-selected {
+  color: #EA7030;
+}
+.ant-menu-item, .ant-menu-submenu-title {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.ant-menu-vertical .ant-menu-item, .ant-menu-vertical-left .ant-menu-item, .ant-menu-vertical-right .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-vertical-left .ant-menu-submenu-title, .ant-menu-vertical-right .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title {
+  height: 40px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0 16px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 40px;
+  text-overflow: ellipsis;
+}
+.ant-menu-vertical > .ant-menu-item, .ant-menu-vertical-left > .ant-menu-item, .ant-menu-vertical-right > .ant-menu-item, .ant-menu-inline > .ant-menu-item, .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-left > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+  height: 40px;
+  line-height: 40px;
+}
+.ant-menu-inline .ant-menu-item, .ant-menu-inline .ant-menu-submenu-title {
+  width: calc(100% + 1px);
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #fff8f0;
+}
+.ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child), .ant-menu-inline .ant-menu-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-right: 3px solid #EA7030;
+  -webkit-transform: scaleY(0.0001);
+  transform: scaleY(0.0001);
+  opacity: 0;
+  -webkit-transition: opacity 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+  content: '';
+}
+.ant-menu-inline .ant-menu-selected::after, .ant-menu-inline .ant-menu-item-selected::after {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  opacity: 1;
+  -webkit-transition: opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.ant-menu::after {
+  display: block;
+  clear: both;
+  content: '';
+}

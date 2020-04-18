@@ -1,0 +1,85 @@
+.ui-table {
+  /*border: solid 1px #dedede;*/
+  /*border-radius: 3px;*/
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.ui-table-body{
+  flex: 1 1 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+.table-body{
+  width: 100%;
+  box-sizing: border-box;
+}
+.table-row {
+  width: 100%;
+  padding: 0 20px;
+  height: 48px;
+  line-height: 48px;
+  border-bottom: solid 1px #dedede;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+}
+.table-row:last-child {
+  border-bottom: none;
+}
+.template-field-5-cols {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /*min-height: 48px;*/
+  line-height: 1.5715;
+  height: auto;
+}
+
+.template-field-5-cols>:nth-child(1) {
+  flex: 0 0 33.33333333%;
+  max-width: 33.33333333%;
+  display: inline-block;
+}
+
+.template-field-5-cols>:nth-child(2) {
+  flex: 0 0 4.16666667%;
+  max-width: 4.16666667%;
+  display: inline-block;
+}
+
+.template-field-5-cols>:nth-child(3), .template-field-5-cols>:nth-child(4) {
+  flex: 0 0 25%;
+  max-width: 25%;
+  display: inline-block;
+}
+
+.template-field-5-cols>:nth-child(5) {
+  flex: 0 0 4.16666667%;
+  max-width: 4.16666667%;
+  display: inline-block;
+}
+.template-field-5-cols>:nth-child(6) {
+  flex: 0 0 4.16666667%;
+  max-width: 4.16666667%;
+  display: inline-block;
+}
+
+.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#playingList .table-row{
+  height: auto;
+  line-height: 1.575;
+}
+
+#playingList .table-row:hover {
+  cursor: pointer;
+  background-color: rgb(50, 50, 50);
+}

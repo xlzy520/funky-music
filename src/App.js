@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { HashRouter, Switch, Route } from 'react-router-dom';
+import TheHeader from './components/Header';
+import TheFooter from './components/Footer';
+import NotFound from './components/NotFound';
+import Player from './components/Player';
+import Hot from './components/Hot';
+import SearchResult from "./components/SearchResult";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <div className="App">
+        <header className="App-header">
+          <TheHeader/>
+        </header>
+        <main className="App-content">
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Hot}/>
+              <Route path="/search" render={SearchResult}/>
+              <Route path="/*" render={NotFound}/>
+            </Switch>
+          </div>
+        </main>
+        <footer className="App-footer">
+          <TheFooter />
+        </footer>
+        <Player />
+      </div>
+    </HashRouter>
+  
   );
 }
 
