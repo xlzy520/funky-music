@@ -17,6 +17,16 @@ const limit = 6;
 const reducer = (state, action) => {
   console.log(state, action);
   switch(action.type) {
+    case 'UPDATE_USER':
+      return {
+        ...state,
+        username: action.data
+      };
+    case 'UPDATE_FAVORITE':
+      return {
+        ...state,
+        favorite: action.data
+      }
     case 'UPDATE_SEARCH_RESULTS':
       return {
         ...state,
@@ -112,7 +122,8 @@ const reducer = (state, action) => {
 
 export const Providers = props => {
   const [store, dispatch] = useReducer(reducer, {
-    playingList: initialList, playIndex, history: initialHistory, searchStatus: '', searchResults: {}
+    playingList: initialList, playIndex, history: initialHistory, searchStatus: '', searchResults: {},
+    username: '', favorite: []
   })
   return (
     <StoreContext.Provider value={[store, dispatch]}>

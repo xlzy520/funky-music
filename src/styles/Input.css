@@ -1,10 +1,8 @@
-.ant-input {
+.funky-input {
   box-sizing: border-box;
   margin: 0;
   font-variant: tabular-nums;
   list-style: none;
-  -webkit-font-feature-settings: 'tnum';
-  font-feature-settings: 'tnum';
   position: relative;
   display: inline-block;
   min-width: 0;
@@ -20,15 +18,15 @@
   transition: all 0.3s;
 }
 
-.ant-input::placeholder {
+.funky-input::placeholder {
   color: #bfbfbf;
 }
 
-.ant-input:hover {
+.funky-input:hover {
   border-color: #f7975c;
   border-right-width: 1px !important;
 }
-.ant-input:focus, .ant-input-focused {
+.funky-input:focus, .funky-input-focused {
   border-color: #f7975c;
   border-right-width: 1px !important;
   outline: 0;
@@ -36,17 +34,17 @@
   box-shadow: 0 0 0 2px rgba(234, 112, 48, 0.2);
 }
 
-.ant-input-search-enter-button + .ant-input-group-addon .ant-input-search-button, .ant-input-search-enter-button input + .ant-input-group-addon .ant-input-search-button {
+.funky-input-search-enter-button + .funky-input-group-addon .funky-input-search-button, .funky-input-search-enter-button input + .funky-input-group-addon .funky-input-search-button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.ant-input-group-wrapper {
+.funky-input-group-wrapper {
   display: inline-block;
   width: 100%;
   text-align: start;
   vertical-align: top;
 }
-.ant-input-group {
+.funky-input-group {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -63,14 +61,14 @@
   border-spacing: 0;
 }
 
-.ant-input-group .ant-input {
+.funky-input-group .funky-input {
   float: left;
   width: 100%;
   margin-bottom: 0;
   text-align: inherit;
 }
 
-.ant-input-group-addon {
+.funky-input-group-addon {
   position: relative;
   padding: 0 11px;
   color: rgba(0, 0, 0, 0.65);
@@ -83,22 +81,23 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.ant-input-search-enter-button + .ant-input-group-addon, .ant-input-search-enter-button input + .ant-input-group-addon {
+.funky-input-search-enter-button + .funky-input-group-addon,
+.funky-input-search-enter-button input + .funky-input-group-addon {
   padding: 0;
   border: 0;
 }
 
-.ant-input-group-addon, .ant-input-group > .ant-input {
+.funky-input-group-addon, .funky-input-group > .funky-input {
   display: table-cell;
 }
-.ant-input-group-addon, .ant-input-group-wrap {
+.funky-input-group-addon, .funky-input-group-wrap {
   width: 1px;
   white-space: nowrap;
   vertical-align: middle;
 }
-.ant-input:placeholder-shown {
+.funky-input:placeholder-shown {
   text-overflow: ellipsis;
 }
-.ant-input-search-enter-button input {
+.funky-input-search-enter-button input {
   border-right: 0;
 }

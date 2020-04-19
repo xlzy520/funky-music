@@ -1,5 +1,4 @@
-import React, {Component, useContext, useEffect, useState, useRef} from 'react';
-// import { connect } from 'react-redux';
+import React, {useContext, useEffect, useState, useRef} from 'react';
 import '../styles/Player.css'
 import Button from './Button'
 import Slider from './Slider'
@@ -12,7 +11,6 @@ import {
   DownloadOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons';
-// import { Row, Col, Slider, Button, Tooltip } from 'antd';
 import {
   MdRepeat as LoopIcon,
   MdRepeatOne as SingleIcon,
@@ -179,7 +177,7 @@ const Player = (props) =>{
   
   const getSongSource = (platform, originalId, callback) =>{
     setgetMusicUrlStatus('started')
-    fetch(`/api/song_source/${platform}/${originalId}`)
+    fetch(`/song_source/${platform}/${originalId}`)
       .then(res => res.json())
       .then(json => {
         if (json.status === 'ok') {

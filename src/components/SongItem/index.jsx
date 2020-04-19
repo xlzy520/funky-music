@@ -1,5 +1,5 @@
 import React, { useContext} from 'react';
-import { PlayCircleOutlined } from '@ant-design/icons';
+import { PlayCircleOutlined, HeartOutlined, DeleteOutlined} from '@ant-design/icons';
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import xiamiMusicLogo from './images/xiami_16.ico';
@@ -8,6 +8,7 @@ import MVIcon from '../MVIcon';
 import AddTo from '../AddTo';
 import './index.css';
 import {StoreContext} from "../../lib/store";
+import Message from "../Message";
 
 const SongItem = (props) => {
   
@@ -26,7 +27,46 @@ const SongItem = (props) => {
   const updatePlayIndex = (index) => {
       dispatch({ type: 'UPDATE_PLAY_INDEX', data: index });
     }
-    
+  
+  const addToFavorite = (song)=>{
+    fetch(`/favorite/add`, {
+      method: 'post',
+      headers: new Headers({
+        'content-type': 'application/json',
+      }),
+      body: JSON.stringify({song }),
+      credentials: 'include'
+    }).then(res => res.json()).then((data)=>{
+      if (data.success) {
+        Message('success', '添加成功')
+        // updateFavorite(data.favorite)
+      } else {
+        Message('error', data.msg)
+      }
+    }).catch(err=>{
+    })
+  }
+  
+  const deleteFavorite = ({songId})=>{
+    fetch(`/favorite/${songId}`, {
+      method: 'delete',
+      headers: new Headers({
+        'content-type': 'application/json',
+      }),
+      credentials: 'include'
+    }).then(res => res.json()).then((data)=>{
+      if (data.success) {
+        Message('success', '删除成功')
+        props.updateFavorite()
+        // updateFavorite(data.favorite)
+      } else {
+        Message('error', data.msg)
+      }
+    }).catch(err=>{
+    })
+  }
+  
+  
   let { song } = props;
   let anchorClass = song.hasCopyright ? '' : 'no-copyright';
   const changeCurrentSong = () => {
@@ -67,14 +107,38 @@ const SongItem = (props) => {
         </a>
       </div>
       <div>
-        {
-          props.showPlatform &&
-          <img
-            src={logos[song.platform]}
-            alt={song.platform}
-            style={{ display: 'block' }}
-          />
+        {props.platform==='my'? (
+          <a onClick={()=>deleteFavorite(song)} className={'play-btn'}>
+            <DeleteOutlined
+              style={{
+              fontSize: 20,
+              display: 'block',
+              }}/>
+          </a>
+          ):(
+            <a onClick={()=>addToFavorite(song)}
+               className={
+                 'play-btn'
+               }
+            >
+              <HeartOutlined
+                style={{
+                  fontSize: 20,
+                  display: 'block',
+                }}
+              />
+            </a>
+          )
         }
+      
+        {/*{*/}
+        {/*  props.showPlatform &&*/}
+        {/*  <img*/}
+        {/*    src={logos[song.platform]}*/}
+        {/*    alt={song.platform}*/}
+        {/*    style={{ display: 'block' }}*/}
+        {/*  />*/}
+        {/*}*/}
       </div>
       <div>
         <a onClick={changeCurrentSong}

@@ -9,16 +9,17 @@
     "@testing-library/user-event": "^7.1.2",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "node-fetch": "^2.1.1",
+    "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.9.0",
-    "react-scripts": "3.4.1",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
     "uuid": "^7.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=5005 react-scripts start",
+    "server": "node server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -26,7 +27,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:8081",
+  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       ">0.2%",

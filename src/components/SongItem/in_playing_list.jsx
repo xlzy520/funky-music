@@ -1,12 +1,10 @@
-import React, {Component, useContext} from 'react';
-// import { Row, Col, List } from 'antd';
+import React, { useContext} from 'react';
 import classNames from "../../lib/classnames";
 import { DeleteOutlined } from '@ant-design/icons';
 
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import xiamiMusicLogo from './images/xiami_16.ico';
-// import { connect } from 'react-redux';
 import './in_playing_list.css';
 import Artists from '../Artists';
 import {StoreContext} from "../../lib/store";

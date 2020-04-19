@@ -1,13 +1,9 @@
-import React, {Component, useContext} from 'react';
+import React, { useContext} from 'react';
 import { DeleteOutlined } from '@ant-design/icons';
-// import { Button, List, Row, Col } from 'antd';
-// import { connect } from 'react-redux';
 import Button from "./Button";
 
 import ItemInPlaylist from './SongItem/in_playing_list';
-// import SongItem from "./SongItem";
 import {StoreContext} from "../lib/store";
-// import { playingList } from '../../../config';
 
 const styles = {
   wrapper: {

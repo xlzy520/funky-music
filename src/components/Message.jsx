@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Message.css'
-const Message = (type = 'info', text = '', duration = 2000) =>{
+const Message = (type = 'info', text = '', duration = 1000) =>{
   const containerId = 'message-container';
   let containerEl = document.getElementById(containerId);
   
@@ -15,7 +15,7 @@ const Message = (type = 'info', text = '', duration = 2000) =>{
     messageEl.className = 'message move-in';
     // 消息内部html字符串
     messageEl.innerHTML = `
-            <div class="text">${text}</div>
+            <div class="text icon-${type}">${text}</div>
         `;
     // 追加到message-container末尾
     // containerEl属性是我们在构造函数中创建的message-container容器
@@ -29,6 +29,7 @@ const Message = (type = 'info', text = '', duration = 2000) =>{
       messageEl.addEventListener('animationend', () => {
         // Element对象内部有一个remove方法，调用之后可以将该元素从dom树种移除！
         messageEl.remove();
+        containerEl.remove();
       });
     }, duration);
   }

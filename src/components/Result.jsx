@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Pagination } from 'antd';
+import React, { useState, useContext } from 'react';
 import '../styles/Result.css'
 import classNames from "../lib/classnames";
 
@@ -23,7 +22,7 @@ const Result = (props)=>{
 
   const onPageChange = (page) => {
     const { provider } = props;
-    fetch(`/api/search?provider=${provider}&keyword=${keyword}&page=${page}`)
+    fetch(`/search?provider=${provider}&keyword=${keyword}&page=${page}`)
       .then(res => res.json())
       .then(json => {
         onResultResponded(provider, json);
@@ -63,32 +62,26 @@ const Result = (props)=>{
              }
              pagination={ result.searchSuccess &&
              (
-               <ul className="ant-pagination ant-pagination-simple">
-                 <li title="Previous Page" className={classNames('ant-pagination-prev',{
-                   'ant-pagination-disabled': pageNo === 1
+               <ul className="pagination pagination-simple">
+                 <li title="Previous Page" className={classNames('pagination-prev',{
+                   'pagination-disabled': pageNo === 1
                  })}>
-                   <a className="ant-pagination-item-link" onClick={increasePageNo}>
+                   <a className="pagination-item-link" onClick={increasePageNo}>
                      <FaAngleLeft/>
                    </a>
                  </li>
-                 <li className="ant-pagination-simple-pager">
+                 <li className="pagination-simple-pager">
                    <input type="text" size={3} value={pageNo} onChange={event => setPageNo(event.target.value)} />
-                   <span className="ant-pagination-slash">/</span>{result.data.totalCount}</li>
-                 <li title="Next Page" className={classNames('ant-pagination-next', {
-                   'ant-pagination-disabled': pageNo === result.data.totalCount
+                   <span className="pagination-slash">/</span>{result.data.totalCount}</li>
+                 <li title="Next Page" className={classNames('pagination-next', {
+                   'pagination-disabled': pageNo === result.data.totalCount
                  })}>
-                   <a className="ant-pagination-item-link" onClick={decreasePageNo}>
+                   <a className="pagination-item-link" onClick={decreasePageNo}>
                      <FaAngleRight/>
                    </a>
                  </li>
                </ul>
-             )
-             // <Pagination
-             //   simple
-             //   onChange={onPageChange}
-             //   defaultPageSize={4}
-             //   total={result.data.totalCount} />
-             }
+             )}
     >
       {mainPart}
     </Wrapper>

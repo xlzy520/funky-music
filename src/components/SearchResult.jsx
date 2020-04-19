@@ -39,7 +39,7 @@ const SearchResult = (props)=>{
     updateSearchHistory(value);
     onSearch();
     providers.forEach(provider => {
-      fetch(`/api/search?provider=${provider}&keyword=${window.encodeURIComponent(value)}`, {
+      fetch(`/search?provider=${provider}&keyword=${window.encodeURIComponent(value)}`, {
         // withCredentials: true
         credentials: 'include'
       })

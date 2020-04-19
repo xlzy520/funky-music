@@ -4,9 +4,9 @@ import SongList from './SongList';
 import {StoreContext} from "../lib/store";
 
 
-const TopSongs = (props) =>{
+const TopSongs = () =>{
   const [topSongs, setTopSongs] = useState([]);
-  const [store, dispatch] = useContext(StoreContext)
+  const [store] = useContext(StoreContext)
   const searchResults = store.searchResults
   
   useEffect(()=>{

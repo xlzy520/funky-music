@@ -1,18 +1,45 @@
 // This file intentionally complex
 const users = {};
 
-const DEFAULT_PROFILE = {
-  theme: 'funky',
+const login = (username, password) => {
+  console.log(users, username, password);
+  if(!users[username]) {
+    return {
+      msg: '用户不存在，请先注册',
+      success: false
+    }
+  } else if (users[username] && users[username].password === password) {
+    return {
+      msg: 'login success',
+      success: true,
+      username
+    }
+  } else {
+    return {
+      msg: 'username and password don\'t match',
+      success: false
+    }
+  }
 };
 
-const getInfo = (username) => {
-  if(!users[username]) {
-    users[username] = { ...DEFAULT_PROFILE, username };
+const register = (username, password) =>{
+  if (users[username]) {
+    return {
+      msg: 'this user is existed',
+      success: false
+    }
+  } else {
+    users[username] = { username, password };
+    return {
+      msg: '注册成功',
+      username,
+      success: true
+    }
   }
-  return users[username];
-};
+}
 
 module.exports = {
-  getInfo,
+  login,
+  register
 };
 

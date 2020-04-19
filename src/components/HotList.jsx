@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
+import {withRouter} from 'react-router-dom';
 
 import SongList from './SongList';
 import OperatingBarOfSongList from './OperatingBarOfSongList';
@@ -12,18 +13,40 @@ const HotList = (props)=>{
     fetchHotList(props.platform);
   }, [props.platform]);
   
-  const fetchHotList = (platform) => {
-    setLoading(true)
-    fetch(`/api/hot_list/${platform}`, {
+  const updateFavorite = () =>{
+    fetch(`/favorite/getAll`, {
       credentials: 'include',
     }).then(res => res.json())
-      .then(json => {
-        if (json.status === 'ok') {
+      .then(data => {
+        if (data.success) {
+          const songsObj = data.data.songs;
+          const songs = Object.keys(songsObj).map(v=> songsObj[v])
           setLoading(false)
-          setSongs(json.data.songs)
+          setSongs(songs)
+        
+        } else {
+          props.history.push('/login')
         }
       })
       .catch(err => console.error(err));
+  }
+  
+  const fetchHotList = (platform) => {
+    setLoading(true)
+    if (platform === 'my') {
+      updateFavorite()
+    } else {
+      fetch(`/hot_list/${platform}`, {
+        credentials: 'include',
+      }).then(res => res.json())
+        .then(json => {
+          if (json.status === 'ok') {
+            setLoading(false)
+            setSongs(json.data.songs)
+          }
+        })
+        .catch(err => console.error(err));
+    }
   }
   
   return <>
@@ -33,9 +56,9 @@ const HotList = (props)=>{
       }
     </div>
     {
-      loading ? <LoadingOutlined /> : <SongList songs={songs} />
+      loading ? <LoadingOutlined /> : <SongList updateFavorite={updateFavorite} songs={songs} platform={props.platform} />
     }
   </>;
 }
 
-export default HotList;
+export default withRouter(HotList);

@@ -5,7 +5,6 @@ import Button from "../Button";
 import './index.css'
 import {StoreContext} from '../../lib/store'
 
-const keyWordContext = React.createContext();
 
 const styles = {
   'minWidth': '708px',
@@ -64,7 +63,7 @@ const SearchBar = (props) => {
       // updateSearchHistory(value);
       // onSearch();
       // providers.forEach(provider => {
-      //   fetch(`/api/search?provider=${provider}&keyword=${window.encodeURIComponent(value)}`, {
+      //   fetch(`/search?provider=${provider}&keyword=${window.encodeURIComponent(value)}`, {
       //     // withCredentials: true
       //     credentials: 'include'
       //   })
@@ -92,34 +91,34 @@ const SearchBar = (props) => {
   
   return (
     <div className="search-bar">
-       <span className="ant-input-search ant-dropdown-trigger ant-input-search-enter-button ant-input-group-wrapper">
-         <span className="ant-input-wrapper ant-input-group">
+       <span className="funky-input-search funky-dropdown-trigger funky-input-search-enter-button funky-input-group-wrapper">
+         <span className="funky-input-wrapper funky-input-group">
            <input placeholder="歌曲 | 专辑 | 艺人"
                   onBlur={handleSearchInputBlur}
                   onFocus={handleSearchInputFocus}
                   onKeyUp={handleKeyPress}
                   onChange={event => setKeyword(event.target.value)}
-                  className="ant-input" value={keyword}/>
-           <span className="ant-input-group-addon">
+                  className="funky-input" value={keyword}/>
+           <span className="funky-input-group-addon">
              <Button type="primary" icon={<SearchOutlined/>} onClick={()=>handleSearch()}/>
            </span>
            <div className="search-results">
-        <div className={`ant-dropdown ant-dropdown-placement-bottomLeft ${hidden ? 'ant-dropdown-hidden' : ''}`}
+        <div className={`funky-dropdown funky-dropdown-placement-bottomLeft ${hidden ? 'funky-dropdown-hidden' : ''}`}
              style={styles}>
-          <ul className="ant-dropdown-menu ant-dropdown-menu-light
-          ant-dropdown-menu-root ant-dropdown-menu-vertical">
-            <li className="ant-dropdown-menu-item-group">
-              <div className="ant-dropdown-menu-item-group-title">
+          <ul className="funky-dropdown-menu funky-dropdown-menu-light
+          funky-dropdown-menu-root funky-dropdown-menu-vertical">
+            <li className="funky-dropdown-menu-item-group">
+              <div className="funky-dropdown-menu-item-group-title">
                 <div className="flex-between-center">
                   <span>搜索历史</span>
                   <Button shape="circle" icon={<DeleteOutlined/>} onClick={clearHistory}/>
                 </div>
               </div>
-              <ul className="ant-dropdown-menu-item-group-list">
+              <ul className="funky-dropdown-menu-item-group-list">
                 {
                   store.history.map(item => {
                     return (
-                      <li className="ant-dropdown-menu-item" onClick={()=>handleSearch(item)}  key={item} role="menuitem">{item}</li>
+                      <li className="funky-dropdown-menu-item" onClick={()=>handleSearch(item)}  key={item} role="menuitem">{item}</li>
                     )
                   })
                 }

@@ -19,11 +19,11 @@ const Button = (props = defaultProps) => {
   
   return (
     <button type="button" onClick={onClick}
-            className={classNames('ant-btn', {
-              'ant-btn-circle': props.shape === 'circle',
-              'ant-btn-icon-only': props.icon && !props.children,
-              'ant-btn-primary': props.type === 'primary',
-              'ant-btn-background-ghost': props.ghost
+            className={classNames('funky-btn', {
+              'funky-btn-circle': props.shape === 'circle',
+              'funky-btn-icon-only': props.icon && !props.children,
+              'funky-btn-primary': props.type === 'primary',
+              'funky-btn-background-ghost': props.ghost
             })}>
       {props.icon}
       <span>{props.children}</span>

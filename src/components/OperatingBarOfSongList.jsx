@@ -1,8 +1,6 @@
-import React, {Component, useContext} from 'react';
+import React, {useContext} from 'react';
 import Button from "./Button";
-// import { Row, Col, Button } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
-// import { connect } from 'react-redux';
 
 import AddTo from './AddTo';
 import {StoreContext} from "../lib/store";

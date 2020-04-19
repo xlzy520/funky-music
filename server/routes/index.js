@@ -3,13 +3,11 @@
 const session = require('../session');
 const theme = require('../theme');
 const tasks = require('../tasks');
+const favorite = require('../favorite');
 
 const web = (res) => {
-  return ({ message, status, data }={}) => {
-    if(!message && !data) {
-      data = 'OK';
-    }
-    res.status(status || 200).json({ message, data });
+  return ({ msg, status, data, success = true }={}) => {
+    res.status(status || 200).json({ msg, data, success });
   };
 };
 
@@ -20,25 +18,43 @@ const routes = {
     one: {},
     all: {},
   },
+  favorite: {
+  
+  }
 };
 
 // Session
-routes.session.status = ( req, res ) => {
-  const sid = req.cookies.sid;
-  const validSession = session.validateSession(sid);
-  if(!validSession) {
-    res.clearCookie('sid');
-    web(res)({status: 401, message: 'no valid session' });
+// routes.session.login1 = ( req, res ) => {
+//   const sid = req.cookies.sid;
+//   const validSession = session.validateSession(sid);
+//   if(!validSession) {
+//     res.clearCookie('sid');
+//     web(res)({status: 401, message: 'no valid session' });
+//     return;
+//   }
+//   web(res)({ data: session.getSession(sid) } );
+// };
+
+routes.session.login = ( req, res ) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const sessionInfo = session.login(username, password);
+  console.log(sessionInfo);
+  if(!sessionInfo || !sessionInfo.success) {
+    web(res)({data: sessionInfo});
     return;
   }
-  web(res)({ data: session.getSession(sid) } );
+  res.cookie('sid', sessionInfo.sid, { MaxAge: 1000*60 } );
+  web(res)({data: sessionInfo});
 };
 
-routes.session.create = ( req, res ) => {
+routes.session.register = ( req, res ) => {
   const username = req.body.username;
-  const sessionInfo = session.attemptCreate(username);
-  if(!sessionInfo) {
-    web(res)({ status: 403, message: 'login denied' });
+  const password = req.body.password;
+  const sessionInfo = session.register(username, password);
+  console.log(sessionInfo);
+  if(!sessionInfo|| !sessionInfo.success) {
+    web(res)({data: sessionInfo});
     return;
   }
   res.cookie('sid', sessionInfo.sid, { MaxAge: 1000*60 } );
@@ -57,6 +73,73 @@ routes.session.remove = ( req, res ) => {
   session.remove(sid);
   web(res)();
 };
+
+routes.favorite.getAll = ( req, res ) => {
+  const sid = req.cookies.sid;
+  const validSession = session.validateSession(sid);
+  if(!validSession) {
+    res.clearCookie('sid');
+    web(res)({success: false, msg: 'no valid session' });
+    return;
+  }
+  
+  // const username = req.params.username;
+  // const isAllowed = session.canReadUser({ sid, username });
+  // if(!isAllowed) {
+  //   web(res)({status: 403, message: 'action not permitted' });
+  //   return;
+  // }
+  const songs = favorite.getAll(validSession);
+  web(res)({ data: {songs} });
+};
+
+routes.favorite.add = ( req, res ) => {
+  const sid = req.cookies.sid;
+  const validSession = session.validateSession(sid);
+  if(!validSession) {
+    res.clearCookie('sid');
+    web(res)({success: false, msg: 'no valid session' });
+    return;
+  }
+  
+  // const username = req.params.username;
+  // const isAllowed = session.canReadUser({ sid, username });
+  // if(!isAllowed) {
+  //   web(res)({status: 403, message: 'action not permitted' });
+  //   return;
+  // }
+  //
+  const song = req.body.song;
+  console.log(song);
+  
+  web(res)({ data: favorite.addFavorite({ username: validSession, song })});
+};
+
+routes.favorite.remove = ( req, res ) => {
+  const sid = req.cookies.sid;
+  const validSession = session.validateSession(sid);
+  if(!validSession) {
+    res.clearCookie('sid');
+    web(res)({success: false, msg: 'no valid session' });
+    return;
+  }
+  
+  // const username = req.params.username;
+  // const isAllowed = session.canReadUser({ sid, username });
+  // if(!isAllowed) {
+  //   web(res)({status: 403, message: 'action not permitted' });
+  //   return;
+  // }
+  
+  const songId = req.params.songId;
+  const song = favorite.removeFavorite({ username: validSession, songId });
+  if(!song) {
+    web(res)({ success: false, msg: 'no such songId' });
+    return;
+  }
+  web(res)({ data: song } );
+};
+
 
 // Theme
 routes.theme.read = ( req, res ) => {

@@ -1,4 +1,4 @@
-.ant-pagination{
+.pagination{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,18 +9,18 @@
   list-style: none;
 }
 
-.ant-pagination-simple .ant-pagination-prev, .ant-pagination-simple .ant-pagination-next {
+.pagination-simple .pagination-prev, .pagination-simple .pagination-next {
   height: 24px;
   line-height: 24px;
   vertical-align: top;
 }
-.ant-pagination-disabled, .ant-pagination-disabled:hover, .ant-pagination-disabled:focus {
+.pagination-disabled, .pagination-disabled:hover, .pagination-disabled:focus {
   cursor: not-allowed;
 }
-.ant-pagination-prev, .ant-pagination-next {
+.pagination-prev, .pagination-next {
   outline: 0;
 }
-.ant-pagination-prev, .ant-pagination-next, .ant-pagination-jump-prev, .ant-pagination-jump-next {
+.pagination-prev, .pagination-next, .pagination-jump-prev, .pagination-jump-next {
   display: inline-block;
   min-width: 32px;
   height: 32px;
@@ -35,7 +35,7 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.ant-pagination-prev, .ant-pagination-jump-prev, .ant-pagination-jump-next {
+.pagination-prev, .pagination-jump-prev, .pagination-jump-next {
   margin-right: 8px;
 }
 a[disabled] {
@@ -43,14 +43,14 @@ a[disabled] {
   cursor: not-allowed;
   pointer-events: none;
 }
-.ant-pagination-prev a, .ant-pagination-next a {
+.pagination-prev a, .pagination-next a {
   color: rgba(0, 0, 0, 0.65);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-.ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
+.pagination-prev .pagination-item-link, .pagination-next .pagination-item-link {
   display: block;
   height: 100%;
   font-size: 12px;
@@ -62,21 +62,21 @@ a[disabled] {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.ant-pagination-disabled a, .ant-pagination-disabled:hover a, .ant-pagination-disabled:focus a, .ant-pagination-disabled .ant-pagination-item-link, .ant-pagination-disabled:hover .ant-pagination-item-link, .ant-pagination-disabled:focus .ant-pagination-item-link {
+.pagination-disabled a, .pagination-disabled:hover a, .pagination-disabled:focus a, .pagination-disabled .pagination-item-link, .pagination-disabled:hover .pagination-item-link, .pagination-disabled:focus .pagination-item-link {
   color: rgba(0, 0, 0, 0.25);
   border-color: #d9d9d9;
   cursor: not-allowed;
 }
-.ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
+.pagination-prev .pagination-item-link, .pagination-next .pagination-item-link {
   height: 24px;
   border: 0;
 }
-.ant-pagination-simple .ant-pagination-simple-pager {
+.pagination-simple .pagination-simple-pager {
   display: inline-block;
   height: 24px;
   margin-right: 8px;
 }
-.ant-pagination-simple-pager input {
+.pagination-simple-pager input {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: 100%;
@@ -90,6 +90,6 @@ a[disabled] {
   -webkit-transition: border-color 0.3s;
   transition: border-color 0.3s;
 }
-.ant-pagination-slash {
+.pagination-slash {
   margin: 0 10px 0 5px;
 }

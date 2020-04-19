@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-
 import neteaseMusicLogo from './images/netease_32.ico';
 import qqMusicLogo from './images/qq_32.ico';
 import xiamiMusicLogo from './images/xiami_32.ico';
